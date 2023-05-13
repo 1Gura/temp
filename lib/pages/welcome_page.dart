@@ -71,6 +71,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             height: 40,
                           ),
                           ResponsiveButton(
+                            text: "Войти",
                             width: 200,
                           )
                         ],

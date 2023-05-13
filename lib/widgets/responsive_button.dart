@@ -5,8 +5,9 @@ import 'package:temp/widgets/app_large_text.dart';
 class ResponsiveButton extends StatelessWidget {
   bool? isResponsive;
   double? width;
+  String text;
 
-  ResponsiveButton({Key? key, this.width, this.isResponsive = false})
+  ResponsiveButton({Key? key, this.width, this.isResponsive = false, required this.text})
       : super(key: key);
 
   @override
@@ -21,7 +22,7 @@ class ResponsiveButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          AppLargeText(text: "SOMETEXT", color: Colors.black,)
+          AppLargeText(text: text, color: Colors.black,)
         ],
       ),
     );
