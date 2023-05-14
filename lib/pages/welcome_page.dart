@@ -15,9 +15,9 @@ class WelcomePage extends StatefulWidget {
 
 class _WelcomePageState extends State<WelcomePage> {
   List images = [
-    "welcome1.jpg",
-    "welcome2.jpg",
-    "welcome3.jpg",
+    "img-section-01.png",
+    "img-section-02.png",
+    "img-section-03.png",
   ];
 
   @override
@@ -54,7 +54,7 @@ class _WelcomePageState extends State<WelcomePage> {
                         children: [
                           Container(
                             width: 300,
-                            child: AppLargeText(text: listText[index]),
+                            child: AppLargeText(text: listText[index], color: Colors.black87,),
                           ),
                           const SizedBox(
                             height: 20,
@@ -63,7 +63,7 @@ class _WelcomePageState extends State<WelcomePage> {
                             width: 250,
                             child: AppText(
                               text: listTextDescribe[index],
-                              color: AppColors.textColor1,
+                              color: Colors.black87,
                               size: 20,
                             ),
                           ),

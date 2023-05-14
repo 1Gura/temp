@@ -6,7 +6,12 @@ class BarItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text("BarItemPage"),
+      width: 100,
+      height: 100,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [Text("BarItemPage")],
+      ),
     );
   }
 }

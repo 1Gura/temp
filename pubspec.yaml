@@ -63,6 +63,12 @@ flutter:
     - assets/img/welcome1.jpg
     - assets/img/welcome2.jpg
     - assets/img/welcome3.jpg
+    - assets/img/konvert.jpg
+    - assets/img/img-section-01.png
+    - assets/img/img-section-02.png
+    - assets/img/img-section-03.png
+    - assets/img/img-section-04.png
+    - assets/img/img-section-05.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
