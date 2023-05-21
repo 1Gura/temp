@@ -1,30 +1,53 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:temp/widgets/app_large_text.dart';
+import 'package:temp/misc/colors.dart';
+import 'package:temp/widgets/app_text.dart';
 
 class ResponsiveButton extends StatelessWidget {
   bool? isResponsive;
   double? width;
   String text;
+  double fontSize;
 
-  ResponsiveButton({Key? key, this.width, this.isResponsive = false, required this.text})
+  ResponsiveButton(
+      {Key? key,
+      this.width = 120,
+      this.isResponsive = false,
+      this.fontSize = 20,
+      required this.text})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    return Container(
-      width: width,
-      height: 60,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.black12
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          AppLargeText(text: text, color: Colors.white,)
-        ],
+    return Flexible(
+      child: Container(
+        width: isResponsive == true ? double.maxFinite : width,
+        height: 60,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: AppColors.textColorPurple),
+        child: Container(
+          margin: EdgeInsets.only(left: 20, right: 20),
+          child: Row(
+            mainAxisAlignment: isResponsive == true
+                ? MainAxisAlignment.spaceBetween
+                : MainAxisAlignment.center,
+            children: [
+              isResponsive == true
+                  ? Container(
+                      child: AppText(
+                      text: "Book Trip Now",
+                      color: Colors.white,
+                      size: fontSize,
+                    ))
+                  : Container(),
+              const Icon(
+                Icons.call_missed_outgoing,
+                color: Colors.white,
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

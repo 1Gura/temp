@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:temp/misc/colors.dart';
 import 'package:temp/widgets/app_large_text.dart';
 import 'package:temp/widgets/app_text.dart';
+import 'package:temp/widgets/responsive_button.dart';
 import 'package:temp/widgets/simple_button.dart';
 
 class DetailPage extends StatefulWidget {
@@ -168,6 +169,29 @@ class _DetailPageState extends State<DetailPage> {
                       ),
                     ],
                   ),
+                )),
+            Positioned(
+                bottom: 20,
+                left: 20,
+                right: 20,
+                child: Row(
+                  children: [
+                    SimpleButton(
+                      color: AppColors.textColorPurple,
+                      backgroundColor: Colors.white,
+                      size: 60,
+                      borderColor: AppColors.textColorPurple,
+                      isIcon: true,
+                      icon: Icons.favorite_border,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    ResponsiveButton(
+                      text: "Go!",
+                      isResponsive: true,
+                    )
+                  ],
                 ))
           ],
         ),
