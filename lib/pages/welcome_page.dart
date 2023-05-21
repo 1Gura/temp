@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:temp/misc/colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:temp/cubit/app_cubits.dart';
 import 'package:temp/widgets/app_large_text.dart';
 import 'package:temp/widgets/app_text.dart';
 
+import '../misc/colors.dart';
 import '../widgets/responsive_button.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -42,6 +43,7 @@ class _WelcomePageState extends State<WelcomePage> {
                 height: double.maxFinite,
                 decoration: BoxDecoration(
                     image: DecorationImage(
+                        //TODO NetworkImage
                         image: AssetImage("assets/img/" + images[index]),
                         fit: BoxFit.cover)),
                 child: Container(
@@ -54,7 +56,10 @@ class _WelcomePageState extends State<WelcomePage> {
                         children: [
                           Container(
                             width: 300,
-                            child: AppLargeText(text: listText[index], color: Colors.black87,),
+                            child: AppLargeText(
+                              text: listText[index],
+                              color: Colors.black87,
+                            ),
                           ),
                           const SizedBox(
                             height: 20,
@@ -70,9 +75,21 @@ class _WelcomePageState extends State<WelcomePage> {
                           SizedBox(
                             height: 40,
                           ),
-                          ResponsiveButton(
-                            text: "Войти",
-                            width: 200,
+                          GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<AppCubits>(context).getData();
+                            },
+                            child: Container(
+                              width: 200,
+                              child: Row(
+                                children: [
+                                  ResponsiveButton(
+                                    text: "Войти",
+                                    width: 200,
+                                  ),
+                                ],
+                              ),
+                            ),
                           )
                         ],
                       ),
@@ -86,8 +103,9 @@ class _WelcomePageState extends State<WelcomePage> {
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8),
                                       color: index == indexDots
-                                          ? Colors.white
-                                          : Colors.white.withOpacity(0.6)),
+                                          ? AppColors.textColorPurple
+                                          : AppColors.textColorPurple
+                                              .withOpacity(0.6)),
                                 )),
                       )
                     ],
