@@ -13,6 +13,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   int gottenStars = 4;
+  int selectedIndex = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +69,7 @@ class _DetailPageState extends State<DetailPage> {
                           ),
                           AppLargeText(
                             text: "\$ 250",
-                            color: Colors.black87,
+                            color: AppColors.textColorPurple,
                           ),
                         ],
                       ),
@@ -128,18 +129,42 @@ class _DetailPageState extends State<DetailPage> {
                       Wrap(
                         children: List.generate(
                             5,
-                            (index) => Container(
-                                  margin: const EdgeInsets.only(right: 10),
-                                  child: SimpleButton(
-                                      size: 50,
-                                      color: Colors.black87,
-                                      backgroundColor: AppColors.backgroundColor1,
-                                      borderColor: AppColors.backgroundColor1,
-                                      text: (index + 1).toString()),
+                            (index) => InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedIndex = index;
+                                    });
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.only(right: 10),
+                                    child: SimpleButton(
+                                        size: 50,
+                                        color: selectedIndex == index
+                                            ? Colors.white
+                                            : Colors.black87,
+                                        backgroundColor: selectedIndex == index
+                                            ? Colors.black87
+                                            : AppColors.backgroundColor1,
+                                        borderColor: AppColors.backgroundColor1,
+                                        text: (index + 1).toString()),
+                                  ),
                                 )),
                       ),
                       const SizedBox(
-                        height: 10,
+                        height: 20,
+                      ),
+                      AppLargeText(
+                        text: "Description",
+                        color: Colors.black.withOpacity(0.8),
+                        size: 26,
+                      ),
+                      AppText(
+                        text:
+                            "You must go for a travel. Traveling helps bla bla bla. You must go for a travel. Traveling helps bla bla bla.",
+                        color: Colors.black,
+                      ),
+                      const SizedBox(
+                        height: 20,
                       ),
                     ],
                   ),
