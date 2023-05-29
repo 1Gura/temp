@@ -12,6 +12,10 @@ class AppCubits extends Cubit<CubitStates> {
   final DataServices data;
   late final places;
 
+  void goAuth() {
+    emit(AuthorizationState());
+  }
+
   void getData() async {
     try {
       emit(LoadingState());

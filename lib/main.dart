@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:temp/cubit/app_cubit_logic.dart';
 import 'package:temp/cubit/app_cubits.dart';
+import 'package:temp/pages/authorization/authorization_page.dart';
 import 'package:temp/services/data_services.dart';
 
 void main() {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider<AppCubits>(
         create: (context) => AppCubits(data: DataServices()),
-        child: const AppCubitLogics(),
+        child: const AuthorizationPage(),
       ),
     );
   }
