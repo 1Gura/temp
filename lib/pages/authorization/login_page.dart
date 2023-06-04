@@ -114,6 +114,8 @@ class _FormWidgetState extends State<FormWidget> {
                     alignment: Alignment.center,
                     child: GestureDetector(
                       onTap: () {
+                        email = "user@mail.com";
+                        password = "user12";
                         BlocProvider.of<AppCubits>(context).login(
                           email,
                           password,

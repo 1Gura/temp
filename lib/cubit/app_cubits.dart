@@ -14,8 +14,8 @@ class AppCubits extends Cubit<CubitStates> {
 
   final DataServices data;
   final AuthService authService;
-  late final places;
   late final AuthModel auth;
+  late List<DataModel> places;
 
   void goRegistration() {
     emit(RegistrationState(const []));
@@ -71,11 +71,11 @@ class AppCubits extends Cubit<CubitStates> {
     } catch (e) {}
   }
 
-  detailPage(DataModel data) {
+  detailPage(DataModel data) async {
     emit(DetailState(data));
   }
 
   goHome() {
-    // emit(LoadedState());
+    emit(LoadedState(places));
   }
 }

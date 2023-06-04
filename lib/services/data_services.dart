@@ -5,10 +5,10 @@ import 'package:http/http.dart' as http;
 import '../model/data_model.dart';
 
 class DataServices {
-  String baseUrl = "https://jsonplaceholder.typicode.com";
+  String baseUrl = "https://localhost:7151/api/Todo";
 
   Future<List<DataModel>> getInfo() async {
-    var apiUrl = '/todos';
+    var apiUrl = '/getTodos';
     http.Response res = await http.get(Uri.parse(baseUrl + apiUrl));
     try {
       if (res.statusCode == 200) {
