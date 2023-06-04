@@ -8,6 +8,8 @@ import 'package:temp/pages/detail_page.dart';
 import 'package:temp/pages/navpages/main_page.dart';
 import 'package:temp/pages/welcome_page.dart';
 
+import '../pages/navpages/loading_page.dart';
+
 class AppCubitLogics extends StatefulWidget {
   const AppCubitLogics({Key? key}) : super(key: key);
 
@@ -31,9 +33,7 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
             return const LoginPage();
           }
           if (state is RegistrationStateLoading) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const LoadingPage();
           }
           if (state is LoadingState) {
             return const Center(

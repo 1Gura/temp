@@ -30,39 +30,44 @@ class AppCubits extends Cubit<CubitStates> {
     String email,
     String password,
     String repeatPassword,
-  ) async {
-    try {
-      auth =
-          await authService.registration(name, email, password, repeatPassword);
+  ) {
+    authService
+        .registration(name, email, password, repeatPassword)
+        .then((auth) {
       if (auth.success) {
-        emit(LoadedState(auth));
+        emit(LoadingState());
+        data.getInfo().then((places) {
+          emit(LoadedState(places));
+        });
       } else {
         print(auth.errors);
         emit(RegistrationState(auth.errors));
       }
-    } catch (e) {}
+    });
   }
 
   void login(
     String email,
     String password,
-  ) async {
-    try {
-      auth = await authService.login(email, password);
+  ) {
+    authService.login(email, password).then((auth) {
       if (auth.success) {
-        emit(LoadedState(auth));
+        emit(LoadingState());
+        data.getInfo().then((places) {
+          emit(LoadedState(places));
+        });
       } else {
         print(auth.errors);
-        emit(LoginState(auth.errors));
+        emit(RegistrationState(auth.errors));
       }
-    } catch (e) {}
+    });
   }
 
   void getData() async {
     try {
       emit(LoadingState());
       places = await data.getInfo();
-      // emit(LoadedState());
+      emit(LoadedState(places));
     } catch (e) {}
   }
 
