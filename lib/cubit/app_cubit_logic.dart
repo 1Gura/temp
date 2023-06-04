@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:temp/cubit/app_cubit_states.dart';
 import 'package:temp/cubit/app_cubits.dart';
 import 'package:temp/pages/authorization/authorization_page.dart';
+import 'package:temp/pages/authorization/login_page.dart';
 import 'package:temp/pages/detail_page.dart';
 import 'package:temp/pages/navpages/main_page.dart';
 import 'package:temp/pages/welcome_page.dart';
@@ -23,10 +24,13 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
           if (state is WelcomeState) {
             return const WelcomePage();
           }
-          if (state is AuthorizationState) {
-            return const AuthorizationPage();
-          }
           if (state is RegistrationState) {
+            return const RegistrationPage();
+          }
+          if (state is LoginState) {
+            return const LoginPage();
+          }
+          if (state is RegistrationStateLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );

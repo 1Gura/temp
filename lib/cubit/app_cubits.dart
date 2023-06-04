@@ -17,8 +17,12 @@ class AppCubits extends Cubit<CubitStates> {
   late final places;
   late final AuthModel auth;
 
-  void goAuth() async {
-    emit(AuthorizationState(const []));
+  void goRegistration() {
+    emit(RegistrationState(const []));
+  }
+
+  void goLogin() {
+    emit(LoginState(const []));
   }
 
   void registration(
@@ -34,7 +38,22 @@ class AppCubits extends Cubit<CubitStates> {
         emit(LoadedState(auth));
       } else {
         print(auth.errors);
-        emit(AuthorizationState(auth.errors));
+        emit(RegistrationState(auth.errors));
+      }
+    } catch (e) {}
+  }
+
+  void login(
+    String email,
+    String password,
+  ) async {
+    try {
+      auth = await authService.login(email, password);
+      if (auth.success) {
+        emit(LoadedState(auth));
+      } else {
+        print(auth.errors);
+        emit(LoginState(auth.errors));
       }
     } catch (e) {}
   }

@@ -7,14 +7,14 @@ import '../../misc/colors.dart';
 import '../../widgets/app_large_text.dart';
 import '../../widgets/responsive_button.dart';
 
-class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<RegistrationPage> createState() => _RegistrationPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
+class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,13 +44,13 @@ class HeaderWidget extends StatelessWidget {
           height: 50,
         ),
         AppLargeText(
-          text: "Если у вас уже есть аккаунт",
+          text: "Вернуться к регистрации",
           color: Colors.black87,
           size: 20,
         ),
         GestureDetector(
             onTap: () {
-              BlocProvider.of<AppCubits>(context).goLogin();
+              BlocProvider.of<AppCubits>(context).goRegistration();
             },
             child: ResponsiveButton(text: "Нажми здесь"))
       ],
@@ -66,13 +66,9 @@ class FormWidget extends StatefulWidget {
 }
 
 class _FormWidgetState extends State<FormWidget> {
-  late String username;
-
   late String email;
 
   late String password;
-
-  late String repeatPassword;
 
   @override
   Widget build(BuildContext context) {
@@ -88,19 +84,6 @@ class _FormWidgetState extends State<FormWidget> {
           padding: EdgeInsets.only(left: 10, right: 10),
           child: Column(
             children: [
-              Text(
-                "username",
-                style: textStyle,
-              ),
-              TextField(
-                onChanged: (text) {
-                  username = text;
-                },
-                decoration: InputDecoration(border: UnderlineInputBorder()),
-              ),
-              SizedBox(
-                height: 10,
-              ),
               Text(
                 "email",
                 style: textStyle,
@@ -125,29 +108,15 @@ class _FormWidgetState extends State<FormWidget> {
               SizedBox(
                 height: 10,
               ),
-              Text(
-                "repeat password",
-                style: textStyle,
-              ),
-              TextField(
-                onChanged: (text) {
-                  repeatPassword = text;
-                },
-              ),
-              SizedBox(
-                height: 10,
-              ),
               Row(
                 children: [
                   Container(
                     alignment: Alignment.center,
                     child: GestureDetector(
                       onTap: () {
-                        BlocProvider.of<AppCubits>(context).registration(
-                          username,
+                        BlocProvider.of<AppCubits>(context).login(
                           email,
                           password,
-                          repeatPassword,
                         );
                       },
                       child: SizedBox(
@@ -156,7 +125,7 @@ class _FormWidgetState extends State<FormWidget> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ResponsiveButton(
-                              text: 'Регистрация',
+                              text: 'Войти',
                               isResponsive: false,
                             ),
                             errors.isNotEmpty

@@ -15,16 +15,25 @@ class WelcomeState extends CubitStates {
   List<Object> get props => [];
 }
 
-class AuthorizationState extends CubitStates {
+class RegistrationState extends CubitStates {
   final List<dynamic> errors;
 
-  AuthorizationState(this.errors);
+  RegistrationState(this.errors);
 
   @override
   List<Object> get props => [errors];
 }
 
-class RegistrationState extends CubitStates {
+class LoginState extends CubitStates {
+  final List<dynamic> errors;
+
+  LoginState(this.errors);
+
+  @override
+  List<Object> get props => [errors];
+}
+
+class RegistrationStateLoading extends CubitStates {
   @override
   List<Object> get props => [];
 }
