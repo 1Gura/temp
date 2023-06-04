@@ -26,6 +26,11 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
           if (state is AuthorizationState) {
             return const AuthorizationPage();
           }
+          if (state is RegistrationState) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
           if (state is LoadingState) {
             return const Center(
               child: CircularProgressIndicator(),

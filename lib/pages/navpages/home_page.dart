@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       body: BlocBuilder<AppCubits, CubitStates>(
         builder: (context, state) {
           if (state is LoadedState) {
-            var info = state.places;
+            // var info = state.places;
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -102,8 +102,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
                             onTap: () {
-                              BlocProvider.of<AppCubits>(context)
-                                  .detailPage(info[index]);
+                              // BlocProvider.of<AppCubits>(context)
+                              //     .detailPage(info[index]);
                             },
                             child: Container(
                               margin: const EdgeInsets.only(right: 15, top: 10),

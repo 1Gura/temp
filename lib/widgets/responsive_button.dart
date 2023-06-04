@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:temp/misc/colors.dart';
 import 'package:temp/widgets/app_text.dart';
@@ -11,7 +10,7 @@ class ResponsiveButton extends StatelessWidget {
 
   ResponsiveButton(
       {Key? key,
-      this.width = 120,
+      this.width = 220,
       this.isResponsive = false,
       this.fontSize = 20,
       required this.text})
@@ -33,10 +32,10 @@ class ResponsiveButton extends StatelessWidget {
                 ? MainAxisAlignment.spaceBetween
                 : MainAxisAlignment.center,
             children: [
-              isResponsive == true
+              text.length > 0
                   ? Container(
                       child: AppText(
-                      text: "Book Trip Now",
+                      text: text,
                       color: Colors.white,
                       size: fontSize,
                     ))

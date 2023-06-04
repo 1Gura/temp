@@ -1,22 +1,22 @@
 class DataModel {
-  int userId;
   int id;
   String title;
-  bool completed;
+  String description;
+  bool done;
 
   DataModel({
-    required this.userId,
     required this.id,
     required this.title,
-    required this.completed,
+    required this.description,
+    required this.done,
   });
 
   factory DataModel.fromJson(Map<String, dynamic> json) {
     return DataModel(
-      userId: json["userId"],
       id: json["id"],
       title: json["title"],
-      completed: json["completed"],
+      description: json["description"],
+      done: json["done"],
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:temp/model/auth_model.dart';
 
 import '../model/data_model.dart';
 
@@ -15,6 +16,15 @@ class WelcomeState extends CubitStates {
 }
 
 class AuthorizationState extends CubitStates {
+  final List<dynamic> errors;
+
+  AuthorizationState(this.errors);
+
+  @override
+  List<Object> get props => [errors];
+}
+
+class RegistrationState extends CubitStates {
   @override
   List<Object> get props => [];
 }
@@ -25,12 +35,12 @@ class LoadingState extends CubitStates {
 }
 
 class LoadedState extends CubitStates {
-  final List<DataModel> places;
+  final AuthModel auth;
 
-  LoadedState(this.places);
+  LoadedState(this.auth);
 
   @override
-  List<Object> get props => [places];
+  List<Object> get props => [auth];
 }
 
 class DetailState extends CubitStates {
