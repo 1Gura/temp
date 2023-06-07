@@ -98,7 +98,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     controller: tabController,
                     children: [
                       ListView.builder(
-                        itemCount: 3 /*info.length*/,
+                        itemCount: info.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
