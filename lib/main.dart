@@ -4,6 +4,7 @@ import 'package:temp/cubit/app_cubit_logic.dart';
 import 'package:temp/cubit/app_cubits.dart';
 import 'package:temp/services/auth_service.dart';
 import 'package:temp/services/data_services.dart';
+import 'package:temp/services/invest_users_service.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,8 +22,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: BlocProvider<AppCubits>(
-        create: (context) =>
-            AppCubits(data: DataServices(), authService: AuthService()),
+        create: (context) => AppCubits(
+            data: DataServices(),
+            authService: AuthService(),
+            investUsersService: InvestUsersService()),
         child: const AppCubitLogics(),
       ),
     );

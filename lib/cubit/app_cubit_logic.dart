@@ -4,6 +4,7 @@ import 'package:temp/cubit/app_cubit_states.dart';
 import 'package:temp/cubit/app_cubits.dart';
 import 'package:temp/pages/authorization/login_page.dart';
 import 'package:temp/pages/authorization/registration_page.dart';
+import 'package:temp/pages/briefcase_page.dart';
 import 'package:temp/pages/detail_page.dart';
 import 'package:temp/pages/navpages/main_page.dart';
 import 'package:temp/pages/welcome_page.dart';
@@ -34,6 +35,9 @@ class _AppCubitLogicsState extends State<AppCubitLogics> {
           }
           if (state is RegistrationStateLoading) {
             return const LoadingPage();
+          }
+          if (state is BriefcaseState) {
+            return const BriefcasePage();
           }
           if (state is LoadingState) {
             return const Center(

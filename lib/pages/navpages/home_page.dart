@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:temp/cubit/app_cubit_states.dart';
 import 'package:temp/cubit/app_cubits.dart';
 import 'package:temp/misc/colors.dart';
+import 'package:temp/pages/briefcase_page.dart';
 
 import '../../widgets/app_large_text.dart';
 import '../../widgets/app_text.dart';
@@ -74,8 +75,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: TabBar(
+                        onTap: (current) {
+                          if (current == 1) {
+
+                          }
+                        },
                         labelPadding:
-                            const EdgeInsets.only(left: 20, right: 20),
+                        const EdgeInsets.only(left: 20, right: 20),
                         labelColor: Colors.black,
                         unselectedLabelColor: Colors.grey,
                         isScrollable: true,
@@ -83,7 +89,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         indicator: CircleTabIndicator(
                             color: AppColors.textColorPurple, radius: 4),
                         controller: tabController,
-                        tabs: const [
+                        tabs: [
                           Tab(text: "Стратегии"),
                           Tab(text: "Портфель"),
                           Tab(text: "Другое"),
@@ -116,9 +122,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 color: Colors.white,
                                 image: DecorationImage(
                                   image: /*NetworkImage()*/
-                                      //TODO заменить на получение картинки с API когда оно появится
-                                      AssetImage("assets/img/" +
-                                          images.keys.elementAt(index)),
+                                  //TODO заменить на получение картинки с API когда оно появится
+                                  AssetImage("assets/img/" +
+                                      images.keys.elementAt(index)),
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -126,7 +132,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           );
                         },
                       ),
-                      Text("Тут будет информация о портфеле"),
+                      BriefcasePage(),
                       Text("Three"),
                     ],
                   ),

@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:temp/model/account_model.dart';
 
 import '../model/data_model.dart';
 
@@ -48,11 +49,21 @@ class LoadingState extends CubitStates {
 
 class LoadedState extends CubitStates {
   final List<DataModel> places;
+  final List<AccountModel> accounts;
 
-  LoadedState(this.places);
+  LoadedState(this.places, this.accounts);
 
   @override
-  List<Object> get props => [places];
+  List<Object> get props => [places, accounts];
+}
+
+class BriefcaseState extends CubitStates {
+  final List<AccountModel> accounts;
+
+  BriefcaseState(this.accounts);
+
+  @override
+  List<Object> get props => [accounts];
 }
 
 class DetailState extends CubitStates {
