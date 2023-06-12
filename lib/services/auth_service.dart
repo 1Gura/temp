@@ -5,6 +5,8 @@ import 'package:temp/model/auth_model.dart';
 
 class AuthService {
   String baseUrl = "https://localhost:7151/api/AuthManagement";
+  late String token;
+  late String refreshToken;
 
   Future<AuthModel> registration(
     String name,
@@ -28,6 +30,7 @@ class AuthService {
       if (res.statusCode == 200 || res.statusCode == 400) {
         dynamic authInfo = json.decode(res.body);
         var auth = AuthModel.fromJson(authInfo);
+        setToken(auth.token, auth.refreshToken);
         return auth;
       } else {
         return AuthModel(
@@ -37,7 +40,6 @@ class AuthService {
             errors: []);
       }
     } catch (e) {
-      print(e);
       return AuthModel(
           token: 'token',
           refreshToken: 'refreshToken',
@@ -64,6 +66,7 @@ class AuthService {
       if (res.statusCode == 200 || res.statusCode == 400) {
         dynamic authInfo = json.decode(res.body);
         var auth = AuthModel.fromJson(authInfo);
+        setToken(auth.token, auth.refreshToken);
         return auth;
       } else {
         return AuthModel(
@@ -73,12 +76,16 @@ class AuthService {
             errors: []);
       }
     } catch (e) {
-      print(e);
       return AuthModel(
           token: 'token',
           refreshToken: 'refreshToken',
           success: false,
           errors: []);
     }
+  }
+
+  void setToken(String token, String refreshToken) {
+    this.token = token;
+    this.refreshToken = refreshToken;
   }
 }

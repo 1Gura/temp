@@ -32,7 +32,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         builder: (context, state) {
           if (state is LoadedState) {
             var info = state.places;
-            print(info);
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -76,12 +75,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     alignment: Alignment.centerLeft,
                     child: TabBar(
                         onTap: (current) {
-                          if (current == 1) {
-
-                          }
+                          if (current == 1) {}
                         },
                         labelPadding:
-                        const EdgeInsets.only(left: 20, right: 20),
+                            const EdgeInsets.only(left: 20, right: 20),
                         labelColor: Colors.black,
                         unselectedLabelColor: Colors.grey,
                         isScrollable: true,
@@ -109,7 +106,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
                             onTap: () {
-                              print(info);
                               BlocProvider.of<AppCubits>(context)
                                   .detailPage(info[index]);
                             },
@@ -122,9 +118,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 color: Colors.white,
                                 image: DecorationImage(
                                   image: /*NetworkImage()*/
-                                  //TODO заменить на получение картинки с API когда оно появится
-                                  AssetImage("assets/img/" +
-                                      images.keys.elementAt(index)),
+                                      //TODO заменить на получение картинки с API когда оно появится
+                                      AssetImage("assets/img/" +
+                                          images.keys.elementAt(index)),
                                   fit: BoxFit.cover,
                                 ),
                               ),

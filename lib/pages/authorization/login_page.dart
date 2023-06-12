@@ -78,7 +78,6 @@ class _FormWidgetState extends State<FormWidget> {
         List<dynamic> errors = [];
         if (state is RegistrationState) {
           errors = state.errors;
-          print(errors);
         }
         return Container(
           padding: EdgeInsets.only(left: 10, right: 10),
