@@ -116,8 +116,8 @@ class _FormWidgetState extends State<FormWidget> {
                         email = "user@mail.com";
                         password = "user12";
                         BlocProvider.of<AppCubits>(context).login(
-                          email,
-                          password,
+                          'user@mail.com',
+                          'user12',
                         );
                       },
                       child: SizedBox(

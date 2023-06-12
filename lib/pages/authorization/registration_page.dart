@@ -222,47 +222,49 @@ class _FormWidgetState extends State<FormWidget> {
                 SizedBox(
                   height: 10,
                 ),
-                Row(
-                  children: [
-                    Container(
-                      alignment: Alignment.center,
-                      child: GestureDetector(
-                        onTap: () {
-                          BlocProvider.of<AppCubits>(context).registration(
-                            username,
-                            email,
-                            password,
-                            repeatPassword,
-                          );
-                        },
-                        child: SizedBox(
-                          height: 200,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ResponsiveButton(
-                                text: 'Регистрация',
-                                isResponsive: false,
-                              ),
-                              errors.isNotEmpty
-                                  ? SizedBox(
-                                      height: 100,
-                                      child: Row(children: [
-                                        AppLargeText(
-                                          text: errors[0],
-                                          color: Colors.red,
-                                        )
-                                      ]),
-                                    )
-                                  : const SizedBox(
-                                      height: 100,
-                                    ),
-                            ],
+                Container(
+                  child: Row(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        child: GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<AppCubits>(context).registration(
+                              username,
+                              email,
+                              password,
+                              repeatPassword,
+                            );
+                          },
+                          child: SizedBox(
+                            height: 200,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ResponsiveButton(
+                                  text: 'Регистрация',
+                                  isResponsive: false,
+                                ),
+                                errors.isNotEmpty
+                                    ? SizedBox(
+                                        height: 100,
+                                        child: Row(children: [
+                                          AppLargeText(
+                                            text: errors[0],
+                                            color: Colors.red,
+                                          )
+                                        ]),
+                                      )
+                                    : const SizedBox(
+                                        height: 100,
+                                      ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 )
               ],
             ),

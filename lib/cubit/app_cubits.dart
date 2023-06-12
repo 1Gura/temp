@@ -43,13 +43,8 @@ class AppCubits extends Cubit<CubitStates> {
         .then((auth) async {
       if (auth.success) {
         emit(LoadingState());
-        var value = await Future.wait([
-          data.getInfo(auth.token),
-          investUsersService.getInfoUserAccounts()
-        ]);
-        List<DataModel> places = value[0] as List<DataModel>;
-        List<AccountModel> accounts = value[1] as List<AccountModel>;
-        emit(LoadedState(places, accounts));
+        var places = data.getInfo(this.authService.token);
+        emit(LoadedState(places as List<DataModel>));
       } else {
         emit(RegistrationState(auth.errors));
       }
@@ -64,13 +59,8 @@ class AppCubits extends Cubit<CubitStates> {
       print("AUTH ${auth.success}");
       if (auth.success) {
         emit(LoadingState());
-        var value = await Future.wait([
-          data.getInfo(auth.token),
-          investUsersService.getInfoUserAccounts()
-        ]);
-        List<DataModel> places = value[0] as List<DataModel>;
-        List<AccountModel> accounts = value[1] as List<AccountModel>;
-        emit(LoadedState(places, accounts));
+        var places = await data.getInfo(auth.token);
+        emit(LoadedState(places));
       } else {
         emit(RegistrationState(auth.errors));
       }
@@ -80,27 +70,25 @@ class AppCubits extends Cubit<CubitStates> {
   void getInfoAccounts() async {
     try {
       emit(LoadingState());
-      var value = await Future.wait(
-          [data.getInfo(auth.token), investUsersService.getInfoUserAccounts()]);
-      List<DataModel> places = value[0] as List<DataModel>;
-      List<AccountModel> accounts = value[1] as List<AccountModel>;
-      emit(LoadedState(places, accounts));
+      var accounts = await investUsersService.getInfoUserAccounts();
+      print("LIST_MAPED $accounts");
+      emit(BriefcaseState(accounts));
     } catch (e) {}
   }
 
-  // void getData() async {
-  //   try {
-  //     emit(LoadingState());
-  //     places = await data.getInfo();
-  //     emit(LoadedState(places));
-  //   } catch (e) {}
-  // }
+  void getData() async {
+    try {
+      emit(LoadingState());
+      places = await data.getInfo(authService.token);
+      emit(LoadedState(places));
+    } catch (e) {}
+  }
 
   detailPage(DataModel data) async {
     emit(DetailState(data));
   }
 
   goHome() {
-    emit(LoadedState(places, accounts));
+    emit(LoadedState(places));
   }
 }

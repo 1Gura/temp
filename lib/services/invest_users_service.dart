@@ -13,11 +13,14 @@ class InvestUsersService {
     try {
       if (res.statusCode == 200) {
         List<dynamic> list = json.decode(res.body);
-        return list.map((e) => AccountModel.fromJson(e)).toList();
+        List<AccountModel> mapedList =
+            list.map((e) => AccountModel.fromJson(e)).toList();
+        return mapedList;
       } else {
         return <AccountModel>[];
       }
     } catch (e) {
+      print(e);
       return <AccountModel>[];
     }
   }

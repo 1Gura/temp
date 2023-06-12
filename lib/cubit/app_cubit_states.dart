@@ -49,12 +49,11 @@ class LoadingState extends CubitStates {
 
 class LoadedState extends CubitStates {
   final List<DataModel> places;
-  final List<AccountModel> accounts;
 
-  LoadedState(this.places, this.accounts);
+  LoadedState(this.places);
 
   @override
-  List<Object> get props => [places, accounts];
+  List<Object> get props => [places];
 }
 
 class BriefcaseState extends CubitStates {

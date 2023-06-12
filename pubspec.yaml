@@ -73,6 +73,7 @@ flutter:
     - assets/img/img-section-03.png
     - assets/img/img-section-04.png
     - assets/img/img-section-05.png
+    - assets/img/briefcase.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

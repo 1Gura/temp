@@ -48,7 +48,7 @@ class _DetailPageState extends State<DetailPage> {
                     children: [
                       IconButton(
                         onPressed: () {
-                          BlocProvider.of<AppCubits>(context).goHome();
+                          BlocProvider.of<AppCubits>(context).getData();
                         },
                         icon: const Icon(Icons.menu),
                         color: Colors.black,

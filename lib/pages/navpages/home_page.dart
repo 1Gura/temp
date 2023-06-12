@@ -87,8 +87,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             color: AppColors.textColorPurple, radius: 4),
                         controller: tabController,
                         tabs: [
-                          Tab(text: "Стратегии"),
                           Tab(text: "Портфель"),
+                          Tab(text: "Стратегии"),
                           Tab(text: "Другое"),
                         ]),
                   ),
@@ -106,8 +106,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
                             onTap: () {
-                              BlocProvider.of<AppCubits>(context)
-                                  .detailPage(info[index]);
+                              if (info[index].title == 'Портфель') {
+                                BlocProvider.of<AppCubits>(context)
+                                    .getInfoAccounts();
+                              } else {
+                                BlocProvider.of<AppCubits>(context)
+                                    .detailPage(info[index]);
+                              }
                             },
                             child: Container(
                               margin: const EdgeInsets.only(right: 15, top: 10),
@@ -123,6 +128,12 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                           images.keys.elementAt(index)),
                                   fit: BoxFit.cover,
                                 ),
+                              ),
+                              child: Center(
+                                child: AppLargeText(
+                                    text: info[index].title,
+                                    color: AppColors.textColorPurple,
+                                    size: 30),
                               ),
                             ),
                           );
