@@ -68,12 +68,12 @@ class _BriefcasePageState extends State<BriefcasePage> {
                           ],
                         )),
                     Positioned(
-                        top: 270,
+                        top: 100,
                         child: Container(
                           padding: const EdgeInsets.only(
                               left: 20, right: 20, top: 30),
                           width: MediaQuery.of(context).size.width,
-                          height: 500,
+                          height: 600,
                           decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
@@ -106,8 +106,10 @@ class _BriefcasePageState extends State<BriefcasePage> {
                                       (BuildContext context, int index) {
                                     return GestureDetector(
                                       onTap: () {
-                                        // BlocProvider.of<AppCubits>(context)
-                                        // .detailPage(context);
+                                        print(accounts[index]);
+                                        BlocProvider.of<AppCubits>(context)
+                                            .getBriefcaseDetail(
+                                                accounts[index]);
                                       },
                                       child: Container(
                                         margin: const EdgeInsets.only(

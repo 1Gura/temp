@@ -65,6 +65,15 @@ class BriefcaseState extends CubitStates {
   List<Object> get props => [accounts];
 }
 
+class BriefcaseDetailState extends CubitStates {
+  final AccountModel account;
+
+  BriefcaseDetailState(this.account);
+
+  @override
+  List<Object> get props => [account];
+}
+
 class DetailState extends CubitStates {
   final DataModel data;
 

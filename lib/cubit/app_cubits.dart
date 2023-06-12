@@ -71,8 +71,14 @@ class AppCubits extends Cubit<CubitStates> {
     try {
       emit(LoadingState());
       var accounts = await investUsersService.getInfoUserAccounts();
-      print("LIST_MAPED $accounts");
       emit(BriefcaseState(accounts));
+    } catch (e) {}
+  }
+
+  void getBriefcaseDetail(AccountModel account) async {
+    try {
+      emit(LoadingState());
+      emit(BriefcaseDetailState(account));
     } catch (e) {}
   }
 
