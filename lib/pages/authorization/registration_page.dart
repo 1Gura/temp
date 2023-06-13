@@ -159,6 +159,7 @@ class _FormWidgetState extends State<FormWidget> {
                   style: textStyle,
                 ),
                 TextFormField(
+                  obscureText: true,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(
@@ -193,6 +194,7 @@ class _FormWidgetState extends State<FormWidget> {
                   style: textStyle,
                 ),
                 TextFormField(
+                  obscureText: true,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   keyboardType: TextInputType.visiblePassword,
                   decoration: InputDecoration(

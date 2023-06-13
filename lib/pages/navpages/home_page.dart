@@ -87,7 +87,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                             color: AppColors.textColorPurple, radius: 4),
                         controller: tabController,
                         tabs: [
-                          Tab(text: "Портфель"),
+                          Tab(text: "Информация по счету"),
                           Tab(text: "Стратегии"),
                           Tab(text: "Другое"),
                         ]),
@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                         itemBuilder: (BuildContext context, int index) {
                           return GestureDetector(
                             onTap: () {
-                              if (info[index].title == 'Портфель') {
+                              if (info[index].title == 'Портфели') {
                                 BlocProvider.of<AppCubits>(context)
                                     .getInfoAccounts();
                               } else {

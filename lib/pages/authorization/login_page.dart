@@ -100,6 +100,7 @@ class _FormWidgetState extends State<FormWidget> {
                 style: textStyle,
               ),
               TextField(
+                obscureText: true,
                 onChanged: (text) {
                   password = text;
                 },
